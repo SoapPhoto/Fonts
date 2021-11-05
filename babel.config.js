@@ -1,13 +1,14 @@
 module.exports = function (api) {
+  api.cache(true)
   return {
     presets: ['next/babel'],
     plugins: [
       [
-        'babel-plugin-styled-components',
+        'styled-components',
         {
           ssr: true,
           pure: true,
-          displayName: api.env('development'),
+          // displayName: api.env('development'),
         },
       ],
     ],

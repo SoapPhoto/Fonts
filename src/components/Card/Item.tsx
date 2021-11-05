@@ -5,6 +5,8 @@ import styled from 'styled-components';
 interface IProps extends CardProps {
   family: string;
   name: string;
+  // eslint-disable-next-line react/require-default-props
+  weight?: number;
 }
 
 const Wrapper = styled(Card)`
@@ -16,7 +18,7 @@ const Wrapper = styled(Card)`
 
 const FontName = styled.div`
   font-size: 16px;
-  font-family: JCYuanTi;
+  font-family: OPPOSans;
   font-weight: 500;
   color: #000;
 `;
@@ -51,13 +53,17 @@ const Url = styled.div`
   }
 `;
 
-const Item: React.FC<IProps> = ({ family, name }) => (
+const Item: React.FC<IProps> = ({ family, name, weight }) => (
   <Wrapper hoverable>
     <Header>
       <FontName>{name}</FontName>
       <FontDes>{family}</FontDes>
     </Header>
-    <Content style={{ fontFamily: family }}>
+    <Content
+      contentEditable
+      suppressContentEditableWarning
+      style={{ fontFamily: family, fontWeight: weight || 400 }}
+    >
       两岸猿声啼不住，轻舟已过万重山。
     </Content>
     {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
