@@ -7,6 +7,7 @@ interface IProps extends CardProps {
   name: string;
   // eslint-disable-next-line react/require-default-props
   weight?: number;
+  fontSize?: number;
 }
 
 const Wrapper = styled(Card)`
@@ -19,12 +20,13 @@ const Wrapper = styled(Card)`
 const FontName = styled.div`
   font-size: 16px;
   font-family: OPPOSans;
-  font-weight: 500;
-  color: #000;
+  font-weight: 700;
+  color: rgba(0, 0, 0,.8);
 `;
 
 const FontDes = styled.div`
   font-size: 12px;
+  color: rgba(0, 0, 0,.6);
 `;
 
 const Header = styled.div`
@@ -40,6 +42,7 @@ const Url = styled.div`
   overflow: hidden;
   position: relative;
   white-space: nowrap;
+  color: rgba(0, 0, 0, .4);
   &::before {
     content: "";
     display: block;
@@ -53,7 +56,9 @@ const Url = styled.div`
   }
 `;
 
-const Item: React.FC<IProps> = ({ family, name, weight }) => (
+const Item: React.FC<IProps> = ({
+  family, name, weight = 400, fontSize = 32,
+}) => (
   <Wrapper hoverable>
     <Header>
       <FontName>{name}</FontName>
@@ -62,7 +67,7 @@ const Item: React.FC<IProps> = ({ family, name, weight }) => (
     <Content
       contentEditable
       suppressContentEditableWarning
-      style={{ fontFamily: family, fontWeight: weight || 400 }}
+      style={{ fontFamily: family, fontWeight: weight, fontSize }}
     >
       两岸猿声啼不住，轻舟已过万重山。
     </Content>
