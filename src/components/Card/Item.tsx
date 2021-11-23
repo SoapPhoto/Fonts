@@ -61,8 +61,8 @@ const Item: React.FC<IProps> = ({
 }) => (
   <Wrapper hoverable>
     <Header>
-      <FontName>{name}</FontName>
-      <FontDes>{family}</FontDes>
+      <FontName style={{ fontFamily: family }}>{name}</FontName>
+      <FontDes style={{ fontFamily: family }}>{family}</FontDes>
     </Header>
     <Content
       contentEditable

@@ -58,6 +58,10 @@ const data = [
     cnName: 'OPPO Sans',
     name: 'OPPOSans',
   },
+  {
+    cnName: '思源黑体',
+    name: 'SourceHanSansCN',
+  },
 ];
 
 const options = [{
@@ -109,7 +113,6 @@ const Home: NextPage = () => {
                 weight={weight}
                 fontSize={size}
               >
-                <div>文楷</div>
                 两岸猿声啼不住，轻舟已过万重山。
               </Item>
             </Col>
