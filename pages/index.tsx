@@ -45,9 +45,6 @@ const List = styled.div`
   grid-gap: 12px;
 `;
 
-const BG = styled.div`
-`;
-
 const Handle = styled.div`
   @media (max-width:768px) {
     display: flex;

@@ -7,6 +7,7 @@ interface IProps extends CardProps {
   name: string;
   // eslint-disable-next-line react/require-default-props
   weight?: number;
+  // eslint-disable-next-line react/require-default-props
   fontSize?: number;
 }
 
