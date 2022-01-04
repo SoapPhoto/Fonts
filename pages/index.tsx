@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   max-width: 1180px;
   margin: 0 auto;
   position: relative;
+  padding: 0 24px;
 `;
 
 const Title = styled.h2`
@@ -25,8 +26,8 @@ const Title = styled.h2`
     content: 'FONTS';
     bottom: -4px;
     left: 50%;
-    width: 400px;
-    transform: translate(-200px);
+    width: 250px;
+    transform: translate(-125px);
     position: absolute;
     text-align: center;
     font-family: 'JCYuanTi';
@@ -38,7 +39,21 @@ const Title = styled.h2`
   }
 `;
 
+const List = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+  grid-gap: 12px;
+`;
+
 const BG = styled.div`
+`;
+
+const Handle = styled.div`
+  @media (max-width:768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const data = [
@@ -62,6 +77,10 @@ const data = [
     cnName: '思源黑体',
     name: 'SourceHanSansCN',
   },
+  {
+    cnName: 'Mi Sans',
+    name: 'MiSans',
+  },
 ];
 
 const options = [{
@@ -80,32 +99,34 @@ const Home: NextPage = () => {
     <Wrapper>
       {/* <BG>Fonts</BG> */}
       <Title>字体</Title>
-      <RadioGroup
-        options={options}
-        size="large"
-        type="button"
-        value={weight}
-        onChange={setWeight}
-        style={{ marginBottom: 20 }}
-      />
-      <Slider
-        value={size}
-        onChange={(value) => setSize(value as number)}
-        min={12}
-        max={42}
-        marks={{
-          12: '12',
-          22: '22',
-          32: '32',
-          42: '42',
-        }}
-        showTicks
-        style={{ marginLeft: 12, width: 220 }}
-      />
-      <Row gutter={[24, 24]}>
+      <Handle>
+        <RadioGroup
+          options={options}
+          size="large"
+          type="button"
+          value={weight}
+          onChange={setWeight}
+          style={{ marginBottom: 20 }}
+        />
+        <Slider
+          value={size}
+          onChange={(value) => setSize(value as number)}
+          min={12}
+          max={42}
+          marks={{
+            12: '12',
+            22: '22',
+            32: '32',
+            42: '42',
+          }}
+          showTicks
+          style={{ marginLeft: 12, width: 220 }}
+        />
+      </Handle>
+      <List gutter={[24, 24]}>
         {
           data.map((font) => (
-            <Col span={8} key={font.name}>
+            <div key={font.name}>
               <Item
                 hoverable
                 family={font.name}
@@ -115,25 +136,10 @@ const Home: NextPage = () => {
               >
                 两岸猿声啼不住，轻舟已过万重山。
               </Item>
-            </Col>
+            </div>
           ))
         }
-        {/* <Col span={8}>
-          <Item style={{ fontFamily: 'JCYuanTi' }}>
-            两岸猿声啼不住，轻舟已过万重山。
-          </Item>
-        </Col>
-        <Col span={8}>
-          <Item style={{ fontFamily: 'Yozai' }}>
-            两岸猿声啼不住，轻舟已过万重山。
-          </Item>
-        </Col>
-        <Col span={8}>
-          <Item style={{ fontFamily: 'Yozai' }}>
-            两岸猿声啼不住，轻舟已过万重山。
-          </Item>
-        </Col> */}
-      </Row>
+      </List>
     </Wrapper>
   );
 };
